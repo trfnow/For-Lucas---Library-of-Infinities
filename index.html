@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title> Library of Infinities</title>
+</head>
+<header>
+<h1><a href="index.html" class="english"> LIBRARY OF INFINITIES</a></h1>
+<h1><a href="index.html?lang=french" class="french hide"> BIBLIOTHÈQUE DES INFINIS</a></h1>
+<!-- <div id="menu">
+  <a href="#menu" class="active">MENU</a>
+</div> -->
+
+  <span id="trigger" class="desktop-menu" onclick="openNavright()">MENU</span>
+    <span id="trigger" class="mobile-menu" onclick="openNavright()"><i class="fa-solid fa-bars"></i></span>
+</header>
+
+    <nav id="myNav" class="overlay">
+      <div class="navHeaderOptions">
+        <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNavright()">X</a> -->
+        <h2 class="closeNav" onclick="closeNavright()">X</h2>
+        <h2 id="englishSelected" class="active" onclick="setEnglishAsLanguage()">EN</h2>
+        <h2>/</h2>
+        <h2 id="frenchSelected"  onclick="setFrenchAsLanguage()">FR</h2>
+      </div>
+        <div class="english overlay-content">
+            <a href="about.html">ABOUT!</a>
+            <a href="team.html">TEAM</a>
+            <a href="index.html">LIBRARY</a>
+            <a href="writing3.html">WRITING</a>
+            <a href="programming.html">PROGRAMMING</a>
+            <a href="resources.html">RESOURCES</a>
+            <a href="mailto:contact@libraryofinfinities.com">CONTACT</a>
+        </div>
+        <div class="french hide overlay-content">
+          <a href="about.html?lang=french">À PROPOS</a>
+          <a href="team.html?lang=french">ÉQUIPE</a>
+          <a href="index.html?lang=french">BIBLIOTHÈQUE</a>
+          <a href="writing3.html?lang=french">ÉCRITURE</a>
+          <a href="programming.html?lang=french">PROGRAMMATION</a>
+          <a href="resources.html?lang=french">RESSOURCES</a>
+          <a href="mailto:contact@libraryofinfinities.com">CONTACT</a>
+      </div>
+    </nav>
+
+
+    
+
+    <script>
+        function openNavright() {
+
+
+          if (window.visualViewport.width<600) {
+            document.getElementById("myNav").style.width = "100%";
+          } 
+          document.getElementById("myNav").style.right = "0%";       
+          windowOpen =true;
+        }
+
+        function closeNavright() {
+
+          if (window.visualViewport.width<600) {
+            document.getElementById("myNav").style.width = "50.5%";
+          }
+
+            document.getElementById("myNav").style.right = "-50.5%";
+            windowOpen =false;
+
+        }
+
+        function setFrenchAsLanguage() { 
+
+          document.getElementById("englishSelected").classList.remove("active")
+          document.getElementById("frenchSelected").classList.add("active")
+
+          const englishElements = document.getElementsByClassName("english")
+          console.log("englishElements")
+          console.log(englishElements)
+
+
+          for (let index = 0; index < englishElements.length; index++) {
+            const element = englishElements[index];
+            element.classList.add("hide")
+          }
+
+          const frenchElements = document.getElementsByClassName("french")
+
+          for (let index = 0; index < frenchElements.length; index++) {
+            const element = frenchElements[index];
+            element.classList.remove("hide")
+          }
+
+          window.history.pushState({}, "title 1", "?lang=french")
+
+
+          // const url = new URL(window.location.href);
+          // url.searchParams.set('lang', 'french');
+          // // url.pathname = url.href
+          // console.log("url")
+          // console.log(url)
+          // // url.searchParams.delete('param2');
+          
+          
+        }
+        function setEnglishAsLanguage() {
+
+          document.getElementById("frenchSelected").classList.remove("active")
+          document.getElementById("englishSelected").classList.add("active")
+
+          const frenchElements = document.getElementsByClassName("french")
+
+          for (let index = 0; index < frenchElements.length; index++) {
+            const element = frenchElements[index];
+            element.classList.add("hide")
+          }
+
+          const englishElements = document.getElementsByClassName("english")
+
+          for (let index = 0; index < englishElements.length; index++) {
+            const element = englishElements[index];
+            element.classList.remove("hide")
+          }
+
+          window.history.pushState({}, "title 1", "?lang=english")
+
+        }
+    </script>
+
+
+<body>
+
+<script>
+//   var headerOffset = function() {
+//   var headerHeight = $('header').height();
+//   $('.content').css('margin-top', headerHeight);
+// }
+
+// $(document).ready(function() {
+//     headerOffset();
+// });
+</script>
+
+<script>
+
+  var footerOffset = function() {
+  var footerHeight = $('footer').height();
+  $('.content').css('margin-bottom', footerHeight);
+  }
+
+$(document).ready(function() {
+      footerOffset();
+  });
+
+  function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+
+  $(document).ready(function() {
+    console.log("lang")
+    console.log(getParameterByName("lang"))
+    const languageSelected = getParameterByName("lang")
+    if (languageSelected==="french") {
+      setFrenchAsLanguage() 
+    }
+    
+  });
+
+
+
+
+</script>
+
+
+<main class="content">
+
+
+<div class="row no-gutters">
+
+  <div class="col-11 col-sm-6 no-gutters">
+
+  		<div id="leftSidePanel" class="leftside">
+    
+    <ul id="myUL">
+      <li class="buttons"><button id="button1" data-link="option1" onclick="mobileHandle()">
+        <a href="#">Dear Philomena <sup>Mugabi Byenkya</sup></a></button></li>
+      <li class="buttons"><button id="button1" data-link="option2" onclick="mobileHandle()">
+        <a href="#">Kintu <sup>Jennifer Nansubuga Makumbi</sup></a></button></li>
+      <!-- <li><a href="#">Parable of the Sower • Octavia Butler <p hidden>futurity</p>
+</a></li> -->
+      <li class="buttons"><button id="button1" data-link="option3" onclick="mobileHandle()">
+        <a href="#">Tropical Fish <sup>Doreen Baingana</sup></a></button></li>
+      <li class="buttons"><button id="button1" data-link="option4" onclick="mobileHandle()">
+        <a href="#">March Volumes 1-3 <sup>John Lewis + Andrew Aydin</sup></a></button></li>
+      <li class="buttons"><button id="button1" data-link="option5" onclick="mobileHandle()">
+        <a href="#">A Small Place <sup>Jamaica Kincaid</sup></a></button></li>
+      <li class="buttons"><button id="button1" data-link="option6" onclick="mobileHandle()">
+        <a href="#">I Have To Live <sup> Aisha Sasha John</sup></a></button></li>
+      <li class="buttons"><button id="button1" data-link="option7" onclick="mobileHandle()">
+        <a href="#">Homegoing <sup> Yaa Gyasi</sup></a></button></li>
+      <li class="buttons"><button id="button1" data-link="option8" onclick="mobileHandle()">
+        <a href="#">Any Known Blood <sup> Lawrence Hilli</sup></a></button></li>
+      <li class="buttons"><button id="button1" data-link="option9" onclick="mobileHandle()">
+        <a href="#">The Hate You Give <sup> Angie Thomas</sup></a></button></li>
+      <li class="buttons"><button id="button1" data-link="option10" onclick="mobileHandle()">
+        <a href="#">The Autobiography of Malcolm X <sup>Malcolm X + Alex Haley</sup></a></button></li>
+      <li class="buttons"><button id="button1" data-link="option11" onclick="mobileHandle()">
+        <a href="#">Live From the Afrikan Resistance <sup> El Jones</sup></a></button></li>
+      <li class="buttons"><button id="button1" data-link="option12" onclick="mobileHandle()">
+        <a href="#">The Colour Purple <sup> Alice Walker</sup></a></button></li>
+
+    </ul>
+
+    <div class="spacer"></div>
+
+  		</div>
+
+   
+  </div>
+
+  <div id="rightSideParent" class="col-1 col-sm-6 no-gutters">
+
+  	  		<div id="rightside">
+  	  		</div>
+
+   </div>
+
+</div>
+
+<div id="hiddenDivs" style="display:none;">
+    <div class="rightside" id="option1">
+      <div class="rightSideHeader">
+        <h1>Dear Philomena <sup>Mugabi Byenkya</sup></h1>
+        <p id="closeRightSide" onclick="mobileRightSideClose()">X</p>
+      </div>
+      
+
+      <p>Dear Philomena, is the story of two strokes, one boy, one girl and a whole lot of magical realism. July 1991, Leocardia Byenkya underwent an ultrasound that informed her to expect a baby girl. She chose the name Philomena. January 16 1992, her baby was born as a boy. Filled with shock and surprise, Leocardia named her baby boy Mugabi. December 2014, Mugabi suffered from two strokes within a week of each other. Mugabi was 22 years old. 'Dear Philomena,' is a series of thoughts and conversations between Mugabi and Philomena (the girl he was supposed to be) about the year he was supposed to die but somehow lived through.</p>
+      <hr>
+
+      <h3>Impact of Work</h3>
+      <p>This is my debut novel and was a work of vulnerability, strength and purpose that addresses mental health, disabilities, sexuality, religion, gender and their intersections with blackness.</p>
+      <hr>
+
+      <h3>Contributor</h3>
+      <p>Mugabi Byenkya</p>
+      <hr>
+        <div class="spacer"></div>
+
+    </div>
+
+    <div class="rightside" id="option2">
+
+      <div class="rightSideHeader">
+        <h1>Kintu <sup>Jennifer Nansubuga Makumbi</sup></h1>
+        <p id="closeRightSide" onclick="mobileRightSideClose()">X</p>
+      </div>
+
+    
+
+
+      <h3>Impact of Work</h3>
+      <p>A Ugandan epic worthy of being a successor/Ugandan equivalent to Achebe’s Things Fall Apart.</p>
+      <hr>
+
+      <h3>Contributor</h3>
+      <p>Mugabi Byenkya</p>
+      <hr>
+        <div class="spacer"></div>
+    </div>
+
+    <div class="rightside" id="option3">
+
+      <div class="rightSideHeader">
+        <h1>Tropical Fish <sup>Doreen Baingana</sup></h1>
+        <p id="closeRightSide" onclick="mobileRightSideClose()">X</p>
+      </div>
+
+
+      
+
+      <h3>Impact of Work</h3>
+      <p>A powerful narrative on sexual assault told through three sisters which parallels the experience of far too many black femmes.</p>
+      <hr>
+
+      <h3>Contributor</h3>     
+      <p>Mugabi Byenkya</p>
+      <hr>
+        <div class="spacer"></div>
+    </div>
+
+    <div class="rightside" id="option4">
+
+      <div class="rightSideHeader">
+        <h1>March Volumes 1-3 <sup>John Lewis and Andrew Aydin</sup></h1>
+        <p id="closeRightSide" onclick="mobileRightSideClose()">X</p>
+      </div>
+
+
+      
+
+      <h3>Impact of Work</h3>
+      <p>Powerful graphic novel that gives a behind the scenes look at the civil rights movement.</p>
+      <hr>
+
+      <h3>Contributor</h3>      
+      <p>Mugabi Byenkya</p>
+      <hr>
+        <div class="spacer"></div>
+    </div>
+
+    <div class="rightside" id="option5">
+
+      <div class="rightSideHeader">
+        <h1>A Small Place <sup>Jamaica Kincaid</sup></h1>
+        <p id="closeRightSide" onclick="mobileRightSideClose()">X</p>
+      </div>
+
+      
+
+      <h3>Impact of Work</h3>
+      <p>This book is so beautifully written + it does a wonderful job of illustrating the ways in which colonial contact is relieved/experienced in the everyday life/routine of a Caribbean tourism-based economy // it made me think of the ways in which my mother and father grew up in (ex) colonies and how my daily encounters with whiteness reiterate the violence of colonialism.</p>
+      <hr>
+      
+      <h3>Contributor</h3>      
+      <p>nènè myriam konaté</p>
+      <hr>
+        <div class="spacer"></div>
+    </div>
+
+    <div class="rightside" id="option6">
+
+      <div class="rightSideHeader">
+        <h1>I Have To Live <sup>Aisha Sasha John</sup></h1>
+        <p id="closeRightSide" onclick="mobileRightSideClose()">X</p>
+      </div>
+
+
+
+      
+
+      <h3>Impact of Work</h3>
+      <p>I just read this book last week in a moment when I was feeling overwhelmed/exhausted and I feel like it called me back into my body + put things into perspective // it was like before reading it I had briefly lost sight of how important my body is, of what I actually need to sustain me // it made me realize that all the things I was feeling overwhelmed by were transient + that even after these things passed I would have to live and it made me ask myself ~how~ I want to live.</p>
+      <hr>
+      
+      <h3>Contributor</h3>      
+      <p>nènè myriam konaté</p>
+      <hr>
+        <div class="spacer"></div>
+    </div>
+
+    <div class="rightside" id="option7">
+
+      <div class="rightSideHeader">
+        <h1>Homegoing <sup>Yaa Gyasi</sup></h1>
+        <p id="closeRightSide" onclick="mobileRightSideClose()">X</p>
+      </div>
+
+
+      
+
+      <h3>Impact of Work</h3>
+      <p>This book made me think of the power of ancestry + the importance of intergenerational exchange(s) // I cried so much as I read this book because it felt like the author had reached inside me and hugged a part of me that I didn't even know existed // I didn't know how much I needed to read Homegoing until I read it, it made me think of my parents and what cosmic energy might have brought them together + of how memories of the transatlantic slave trade haunt our collective subconscious // but most importantly it made me think of the various modes of resistance adopted by my ancestors that made my very existence possible.</p>
+      <hr>
+
+      <h3>Contributor</h3>      
+      <p>nènè myriam konaté</p>
+      <hr>
+        <div class="spacer"></div>
+    </div>
+
+    <div class="rightside" id="option8">
+
+      <div class="rightSideHeader">
+        <h1>Any Known Blood <sup>Lawrence Hilli</sup></h1>
+        <p id="closeRightSide" onclick="mobileRightSideClose()">X</p>
+      </div>
+
+
+
+
+      
+
+      <h3>Impact of Work</h3>
+      <p>It really helped reassure my black identity as a mixed race youth who was struggling with racial identity.   </p>
+      <hr>
+      
+      <h3>Contributor</h3>      
+      <p>Andre Fenton</p>
+      <hr>
+        <div class="spacer"></div>
+    </div>
+
+    <div class="rightside" id="option9">
+
+      <div class="rightSideHeader">
+        <h1>The Hate You Give <sup>Angie Thomas</sup></h1>
+        <p id="closeRightSide" onclick="mobileRightSideClose()">X</p>
+      </div>
+
+
+
+      
+
+      <h3>Impact of Work</h3>
+      <p>The Hate U Give by Angie Thomas is a very good book right now. It's an honest book. The dialogue, pop culture references, and the honesty really makes me feel like I'm represented within the book. It has some heavy content, but it's an important read. </p>
+      <hr>
+
+      <h3>Contributor</h3>      
+      <p>Andre Fenton</p>
+      <hr>
+        <div class="spacer"></div>
+    </div>
+
+    <div class="rightside" id="option10">
+
+      <div class="rightSideHeader">
+        <h1>The Autobiography of Malcolm X <sup>Malcolm X and Alex Haley</sup></h1>
+        <p id="closeRightSide" onclick="mobileRightSideClose()">X</p>
+      </div>
+
+
+      
+
+      <h3>Impact of Work</h3>
+      <p>The Autobiography of Malcolm X really opened my eyes to oppression, and the normalization of white supremacy in society.</p>
+      <hr>
+
+      <h3>Contributor</h3>      
+      <p>Andre Fenton</p>
+      <hr>
+        <div class="spacer"></div>
+    </div>
+
+    <div class="rightside" id="option11">
+
+      <div class="rightSideHeader">
+        <h1>Live From the Afrikan Resistance <sup>El Jones</sup> </h1>
+        <p id="closeRightSide" onclick="mobileRightSideClose()">X</p>
+      </div>
+      
+
+      <h3>Impact of Work</h3>
+      <p>El Jones' Live From The Afrikan Resistance needs to be in every black youth's life. El Jones's book influenced me with so much strength and resilience, and made me confident as a young black person.</p>
+      <hr>
+
+      <h3>Contributor</h3>      
+      <p>Andre Fenton</p>
+      <hr>
+        <div class="spacer"></div>
+    </div>
+
+    <div class="rightside" id="option12">
+
+      <div class="rightSideHeader">
+        <h1>The Colour Purple <sup>Alice Walker</sup> </h1>
+        <p id="closeRightSide" onclick="mobileRightSideClose()">X</p>
+      </div>
+      
+
+      <h3>Impact of Work</h3>
+      <p>This is a test paragraph</p>
+      <hr>
+
+      <h3>Contributor</h3>
+      <p>Shaya Ishaq</p>
+      <hr>
+        <div class="spacer"></div>
+    </div>
+
+    
+</div>
+
+</main>
+
+<div class="footer">
+<!-- 	<div id="add">
+  <a href="#add" class="active">ADD</a>
+</div> -->
+
+<nav id="add" class="english overlay2">
+        <div class="navHeaderOptions">
+          <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNavright()">X</a> -->
+          <h2 class="closeNav" onclick="closeAdd()">X</h2>
+        </div>
+        <!-- <a href="javascript:void(0)" class="closebtn2" onclick="closeAdd()">X</a> -->
+        <div class="overlay-content2">
+           
+            <form action="contact.php" method="post">
+              <div class="elem-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" required>
+              </div>
+              <div class="elem-group">
+                <label for="author">Author/Artist</label>
+                <input type="text" id="author" name="author_name" required>
+              </div>
+              <div class="elem-group">
+                <label for="description">Description of Work</label>
+                <textarea id="description" name="description" required></textarea>
+              </div>
+              <div class="elem-group">
+                <label for="description_affect">How The Work Has Affected You</label>
+                <textarea id="description_affect" name="affect" required></textarea>
+              </div>
+               <div class="elem-group">
+                <label for="link">Link to Work</label>
+                <input type="text" id="link" name="link_to_work" required>
+              </div>
+              <div class="elem-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="contributor_name" required>
+              </div>
+              <div class="elem-group">
+                <label for="email">Your E-mail</label>
+                <input type="email" id="email" name="visitor_email" required>
+              </div>
+              <div class="elem-group">
+                <label for="category-selection">Display Your Name Publicly</label>
+              <select id="category-selection" name="concerned_category" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+              </div>
+             
+              
+              <button id="submit-button" class="english" type="submit">SUBMIT</button>
+              <!-- <button id="submit-button" class="french hide" type="submit">SOUMETTRE</button> -->
+            </form>
+
+        </div>
+</nav>
+
+<nav id="addFrench" class="french hide overlay2">
+  <!-- <a href="javascript:void(0)" class="closebtn2" onclick="closeAdd()">X</a> -->
+  <div class="navHeaderOptions">
+    <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNavright()">X</a> -->
+    <h2 class="closeNav" onclick="closeAddFrench()">X</h2>
+  </div>
+  <div class="overlay-content2">
+     
+      <form action="contactFrench.php" method="post">
+        <div class="elem-group">
+          <label for="title">Titre</label>
+          <input type="text" id="title" name="title" required>
+        </div>
+        <div class="elem-group">
+          <label for="author">Auteur/Artiste</label>
+          <input type="text" id="author" name="author_name" required>
+        </div>
+        <div class="elem-group">
+          <label for="description">Description de l'œuvre</label>
+          <textarea id="description" name="description" required></textarea>
+        </div>
+        <div class="elem-group">
+          <label for="description_affect">Comment l'œuvre vous a touché</label>
+          <textarea id="description_affect" name="affect" required></textarea>
+        </div>
+         <div class="elem-group">
+          <label for="link">Lien vers l'œuvre</label>
+          <input type="text" id="link" name="link_to_work" required>
+        </div>
+        <div class="elem-group">
+          <label for="name">Votre nom</label>
+          <input type="text" id="name" name="contributor_name" required>
+        </div>
+        <div class="elem-group">
+          <label for="email">Votre courriel</label>
+          <input type="email" id="email" name="visitor_email" required>
+        </div>
+        <div class="elem-group">
+          <label for="category-selection">Affichez votre nom en public</label>
+        <select id="category-selection" name="concerned_category" required>
+              <option value="">Sélectionner</option>
+              <option value="yes">Oui</option>
+              <option value="no">Non</option>
+          </select>
+        </div>
+       
+        
+        <button id="submit-button" class="french" type="submit">SOUMETTRE</button>
+        <!-- <button id="submit-button" class="french hide" type="submit">SOUMETTRE</button> -->
+      </form>
+
+  </div>
+</nav>
+
+    <span id="trigger2" class="english" onclick="openAdd()">SUBMIT!</span>
+    <span id="trigger2" class="french hide"  onclick="openAddFrench()">SOUMETTRE</span>
+
+    <script>
+        function openAdd() {
+
+          if (window.visualViewport.width<600) {
+            document.getElementById("add").style.width = "101%";
+            } 
+            document.getElementById("add").style.right = "0";
+            windowOpen =true;
+        }
+        function openAddFrench() {
+
+
+          if (window.visualViewport.width<600) {
+            document.getElementById("addFrench").style.width = "101%";
+            } 
+            document.getElementById("addFrench").style.right = "0";
+            windowOpen =true;
+        }
+        
+
+        function closeAdd() {
+
+          if (window.visualViewport.width<600) {
+            document.getElementById("add").style.width = "50.5%";
+          }
+
+
+            document.getElementById("add").style.right = "-50.5%";
+            windowOpen =false;
+
+        }
+        function closeAddFrench() {
+
+          if (window.visualViewport.width<600) {
+            document.getElementById("addFrench").style.width = "50.5%";
+          }
+
+
+            document.getElementById("addFrench").style.right = "-50.5%";
+            windowOpen =false;
+
+
+
+
+        }
+
+        function mobileHandle() {
+          
+
+          if (window.visualViewport.width<600) {
+            console.log('ty!')
+
+            
+              const leftSideClassList = document.getElementById("leftSidePanel").classList
+              const rightSideClassList = document.getElementById("rightside").classList
+              var rightSideExpanded = false
+              var rightSideReversed = false
+              var leftSideReduced = false
+              var element
+              for (let index = 0; index < leftSideClassList.length; index++) {
+                element = leftSideClassList[index];
+                if (element==="reduced") {
+                  leftSideReduced=true
+                  console.log('left side is reduced')
+                }
+              }
+
+              if (leftSideReduced) {
+                return null
+                // document.getElementById("leftSidePanel").classList.toggle("reduced")
+                
+                // $('#rightside').empty()
+                // return null
+              }
+
+
+
+              for (let index = 0; index < rightSideClassList.length; index++) {
+                element = rightSideClassList[index];
+                if (element==="expanded") {
+                  rightSideExpanded=true
+                  console.log('right side is expanded')
+                }
+                if (element==="reverse") {
+                  rightSideReversed=true
+                }
+              }
+
+              if (rightSideReversed) {
+                document.getElementById("rightside").classList.toggle("reverse")
+              }
+
+              if (rightSideExpanded) {
+                console.log('reduced right!')
+                // document.getElementById("rightside").classList.remove("expanded")
+                document.getElementById("rightside").classList.toggle("expanded")
+                
+                
+              } else{
+                console.log('expanded right!')
+                document.getElementById("leftSidePanel").classList.toggle("reduced")
+                // document.getElementById("leftSidePanel").classList.add("reduced")
+                document.getElementById("rightside").classList.toggle("expanded")
+                document.getElementById("rightside").style.zIndex = "100"
+                document.getElementById("rightside").style.width = "93vw"
+              }
+            
+
+
+
+
+          }
+
+          
+        }
+
+
+        function mobileRightSideClose() {
+          $('#rightside').empty()
+          console.log("closing")
+          document.getElementById("leftSidePanel").classList.toggle("reduced")
+          document.getElementById("rightside").classList.toggle("expanded")
+          document.getElementById("rightside").classList.toggle("reverse")
+          // document.getElementById("rightside").classList.add("reverse")
+          // document.getElementById("leftSidePanel").classList.remove("reduced")
+
+          // setInterval(() => {
+
+          //   document.getElementById("rightside").classList.remove("reverse")
+          //   // document.getElementById("rightside").style = "none"
+          //   // document.getElementById("rightside").style.width = "93vw"
+          // }, 1400);
+          
+        }
+    </script>
+
+    <input type="text" id="myInput" class="english" onkeyup="myFunction()" placeholder="SEARCH" title="Type in a name">
+    <input type="text" id="myFrenchInput" class="french hide" onkeyup="myFrenchFunction()" placeholder="RECHERCHER" title="Type in a name">
+
+<!-- <div id="search">
+  <a href="#search" class="active">SEARCH</a>
+</div> -->
+</div>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+function myFrenchFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myFrenchInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+<script>
+
+$(document).ready(function (){
+    $('.buttons button').click(function (){
+        $('#rightside').empty();
+        $('#rightside').html($("#" + $(this).data('link')).html());
+    });    
+ });
+ </script>
+
+ <script>
+ $(function(){
+var scroll_text;
+$('myUL').hover(
+    function () {
+        var $elmt = $(this);
+        scroll_text = setInterval(function(){scrollText($elmt);}, 5);
+    },
+    function () {
+        clearInterval(scroll_text);
+        $(this).find('myUL li a').css({
+            left: 0
+        });
+    }
+);
+    
+    var scrollText = function($elmt){
+        var left = $elmt.find('myUL li a').position().left - 1;
+        left = -left > $elmt.find('myUL li a').width() ? $elmt.find('myUL').width() : left;
+        $elmt.find('myUL li a').css({
+            left: left
+        });
+    };
+    
+});
+ </script>
+
+</body>
+</html>

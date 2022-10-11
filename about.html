@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <title> Library of Infinities</title>
+
+
+
+
+</head>
+<header>
+    <h1><a href="index.html" class="english" id="main-header"> LIBRARY OF INFINITIES</a></h1>
+    <h1><a href="index.html?lang=french" class="french hide"> BIBLIOTHÈQUE DES INFINIS</a></h1>
+    <span id="trigger" class="desktop-menu" onclick="openNavright()">MENU</span>
+    <span id="trigger" class="mobile-menu" onclick="openNavright()"><i class="fa-solid fa-bars"></i></span>
+<!-- <div id="menu">
+  <a href="#menu" class="active">MENU</a>
+</div> -->
+</header>
+
+<nav id="myNav" class="overlay">
+    <div class="navHeaderOptions">
+      <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNavright()">X</a> -->
+      <h2 class="closeNav" onclick="closeNavright()">X</h2>
+      <h2 id="englishSelected" class="active" onclick="setEnglishAsLanguage()">EN</h2>
+      <h2>/</h2>
+      <h2 id="frenchSelected"  onclick="setFrenchAsLanguage()">FR</h2>
+    </div>
+      <div class="english overlay-content">
+          <a href="about.html">ABOUT!</a>
+          <a href="team.html">TEAM</a>
+          <a href="index.html">LIBRARY</a>
+          <a href="writing3.html">WRITING</a>
+          <a href="programming.html">PROGRAMMING</a>
+          <a href="resources.html">RESOURCES</a>
+          <a href="mailto:contact@libraryofinfinities.com">CONTACT</a>
+      </div>
+      <div class="french hide overlay-content">
+        <a href="about.html?lang=french">À PROPOS</a>
+        <a href="team.html?lang=french">ÉQUIPE</a>
+        <a href="index.html?lang=french">BIBLIOTHÈQUE</a>
+        <a href="writing3.html?lang=french">ÉCRITURE</a>
+        <a href="programming.html?lang=french">PROGRAMMATION</a>
+        <a href="resources.html?lang=french">RESSOURCES</a>
+        <a href="mailto:contact@libraryofinfinities.com">CONTACT</a>
+    </div>
+  </nav>
+
+    
+
+    <script>
+        function openNavright() {
+
+
+        if (window.visualViewport.width<600) {
+        document.getElementById("myNav").style.width = "100%";
+        } 
+        document.getElementById("myNav").style.right = "0%";       
+        windowOpen =true;
+        }
+        function closeNavright() {
+
+        if (window.visualViewport.width<600) {
+        document.getElementById("myNav").style.width = "50.5%";
+        }
+
+        document.getElementById("myNav").style.right = "-50.5%";
+        windowOpen =false;
+
+        }
+
+        function setFrenchAsLanguage() { 
+            document.getElementById("englishSelected").classList.remove("active")
+            document.getElementById("frenchSelected").classList.add("active")
+
+            const englishElements = document.getElementsByClassName("english")
+            console.log("englishElements")
+            console.log(englishElements)
+
+
+            for (let index = 0; index < englishElements.length; index++) {
+            const element = englishElements[index];
+            element.classList.add("hide")
+            }
+
+            const frenchElements = document.getElementsByClassName("french")
+
+            for (let index = 0; index < frenchElements.length; index++) {
+            const element = frenchElements[index];
+            element.classList.remove("hide")
+            }
+            window.history.pushState({}, "title 1", "?lang=french")
+
+        }
+        function setEnglishAsLanguage() {
+            document.getElementById("frenchSelected").classList.remove("active")
+            document.getElementById("englishSelected").classList.add("active")
+
+            const frenchElements = document.getElementsByClassName("french")
+
+            for (let index = 0; index < frenchElements.length; index++) {
+            const element = frenchElements[index];
+            element.classList.add("hide")
+            }
+
+            const englishElements = document.getElementsByClassName("english")
+
+            for (let index = 0; index < englishElements.length; index++) {
+            const element = englishElements[index];
+            element.classList.remove("hide")
+            }
+
+            window.history.pushState({}, "title 1", "?lang=english")
+        }
+    </script>
+
+
+
+<body>
+
+<script>
+//   var headerOffset = function() {
+//   var headerHeight = $('header').height();
+//   $('.content').css('margin-top', headerHeight);
+// }
+
+// $(document).ready(function() {
+//     headerOffset();
+// });
+</script>
+
+<script>
+
+  var footerOffset = function() {
+  var footerHeight = $('footer').height();
+  $('.content').css('margin-bottom', footerHeight);
+}
+
+$(document).ready(function() {
+    footerOffset();
+});
+
+function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+
+  $(document).ready(function() {
+    console.log("lang")
+    console.log(getParameterByName("lang"))
+    const languageSelected = getParameterByName("lang")
+    if (languageSelected==="french") {
+      setFrenchAsLanguage() 
+    }
+    
+  });
+
+
+  function mobileHandle() {
+          
+
+          if (window.visualViewport.width<600) {
+            console.log('ty!')
+
+            
+              const leftSideClassList = document.getElementById("leftSidePanel").classList
+              const rightSideClassList = document.getElementById("rightside").classList
+              var rightSideExpanded = false
+              var rightSideReversed = false
+              var leftSideReduced = false
+              var element
+              for (let index = 0; index < leftSideClassList.length; index++) {
+                element = leftSideClassList[index];
+                if (element==="reduced") {
+                  leftSideReduced=true
+                  console.log('left side is reduced')
+                }
+              }
+
+              if (leftSideReduced) {
+                return null
+                // document.getElementById("leftSidePanel").classList.toggle("reduced")
+                
+                // $('#rightside').empty()
+                // return null
+              }
+
+
+
+              for (let index = 0; index < rightSideClassList.length; index++) {
+                element = rightSideClassList[index];
+                if (element==="expanded") {
+                  rightSideExpanded=true
+                  console.log('right side is expanded')
+                }
+                if (element==="reverse") {
+                  rightSideReversed=true
+                }
+              }
+
+              if (rightSideReversed) {
+                document.getElementById("rightside").classList.toggle("reverse")
+              }
+
+              if (rightSideExpanded) {
+                console.log('reduced right!')
+                // document.getElementById("rightside").classList.remove("expanded")
+                document.getElementById("rightside").classList.toggle("expanded")
+                
+                
+              } else{
+                console.log('expanded right!')
+                document.getElementById("leftSidePanel").classList.toggle("reduced")
+                // document.getElementById("leftSidePanel").classList.add("reduced")
+                document.getElementById("rightside").classList.toggle("expanded")
+                document.getElementById("rightside").style.zIndex = "100"
+                document.getElementById("rightside").style.width = "93vw"
+              }
+            
+
+
+
+
+          }
+
+          
+        }
+
+
+        function mobileRightSideClose() {
+          $('#rightside').empty()
+          console.log("closing")
+          document.getElementById("leftSidePanel").classList.toggle("reduced")
+          document.getElementById("rightside").classList.toggle("expanded")
+          document.getElementById("rightside").classList.toggle("reverse")
+          // document.getElementById("rightside").classList.add("reverse")
+          // document.getElementById("leftSidePanel").classList.remove("reduced")
+
+          // setInterval(() => {
+
+          //   document.getElementById("rightside").classList.remove("reverse")
+          //   // document.getElementById("rightside").style = "none"
+          //   // document.getElementById("rightside").style.width = "93vw"
+          // }, 1400);
+          
+        }
+
+
+
+</script>
+
+
+<main class="english content">
+
+
+<div class="row no-gutters">
+
+  <div class="col-sm-6 no-gutters">
+
+  		<div class="leftside" id="about-leftSide">
+
+        <h1>About</h1>
+    
+    <p>Library of Infinities is a digital space that celebrates the diversity and creativity of the Black imagination through literature, film, and music. </p>
+
+    <p>As a web platform we invite people to add to a growing database of books by authors of the afro-diaspora. This space invites people to leave their mark for future visitors of this user generated archive where we can share and learn from each other's perspectives. As a digital library, we value sharing and aim to provide work and resources for deepening our understanding of the work featured on this platform. </p>
+
+    <p>Library of Infinities strives to be a portal of connection on a shared respect and love for Black and afro-diasporic literature. </p>
+
+    <h1 class="secondary">Vision</h1>
+    
+    <p>Library of Infinities has taken shape as a physical exhibition and now as a web platform. Though modular in its essence, we are organically growing the archival database of the site in time and will realize this through continued engagement of the communities it serves and celebrates. As it grows, it aspires to be a resource for various spaces. </p>
+
+       <h1 class="secondary">Values</h1>
+    
+    <p>Library of infinities values and prioritizes the literary work of Black and afro-diasporic storytellers.</p>
+
+    <p>As a digital library, we value sharing and aim to provide resources for deepening our understanding of Black and Afro-diasporic creative expression.</p>
+
+    <p>We champion a diverse idea of Blackness by creating a portal offering nuanced  perspectives to engage with. </p>
+
+        <h1 class="secondary">Who Is This For?</h1>
+    
+    <p>Library of Infinities is a Black-led platform that invites people who share a love and respect for Black literature to share their perspectives on work that has affected them. The community this space is trying to garner is one that values Black literature and arts. This platform is developed by and for Black and Afro-diasporic communities and anyone who values our mission. The submission section incites people of various generations to contribute ranging from high school and onwards. This platform is built to resonate with book lovers, artists, educators, academics, and creative technologists. 
+</p>
+
+
+
+
+    <div class="spacer"></div>
+
+  		</div>
+
+   
+  </div>
+
+  <div class="col-sm-6 no-gutters">
+
+        <div id="rightside" class="about-rightSide">
+  	  	<h1>History</h1>
+    
+    <p>In the fall of 2017, artist Shaya Ishaq began a project called Black Libraries Matter during a residency at the Khyber Center for the Arts in Halifax, Nova Scotia. This community generated initiative created in partnership with the North Branch Memorial Library was a celebration of resistance through literature and valued ideas as a catalyst for hope and change around issues of social injustice pertaining to the Black diaspora. This space composed of books, music, film and video work by Black and Afro-Diasporic creators based in Canada and beyond was activated by a reading group, film screenings and art making workshops co-facilitated with local African Nova Scotian and Black artists. </p>
+
+    <p>In the summer of 2021, Shaya Ishaq revisited this project in a major solo exhibition called Library of Infinities at SAW in Ottawa, Ontario. In this new iteration, the entire facility was transformed into a library and community action space. Library of Infinities was a collective attempt at envisioning liberation of the imagination through literature, solidarity, and the narratives of resilience woven through black diasporic communities across Turtle Island. Contributions to the project (book titles) had been made by community leaders, artists, writers, activists, teachers in Halifax where it originally began when it was formerly known as Black Libraries Matter. By activating a space with the multiplicity of Black voices on this land, we are creating a portal of resources and stories that can empower and open minds.</p>
+
+    <p>To accompany the physical exhibition space and off-site collaborations, a beta version of the Library of Infinities website was launched. The intention and hope of developing the library into a digital realm is to allow visitors to contribute to a growing database of user submitted book titles. This has the potential to reach audiences across the country, around the world and ultimately engage people well beyond the exhibition. This digital space is a portal. Not one that boasts of one monolithic understanding of Black people but rather one that holds space for a boundless constellation of interrelations. </p>
+
+    <p>As this project continues to evolve, questions that informed Shaya Ishaq include: How can a web platform be a generative space for learning and sharing? What does collaboration look like in this digital realm? How can the Library of Infinities facilitate dynamic ways of storytelling?</p>
+
+        <div class="spacer"></div>
+
+
+   </div>
+
+</div>
+
+
+
+</main>
+
+<main class="french hide content">
+
+
+    <div class="row no-gutters">
+    
+      <div class="col-sm-6 no-gutters">
+    
+        <div class="leftside" id="about-leftSide">
+    
+            <h1>Mission</h1>
+            
+            <p>La Bibliothèque des infinis est un espace numérique qui célèbre la diversité et la créativité de l’imaginaire des Noir.e.s en littérature, en cinéma et en musique.</p>
+        
+            <p>La Bibliothèque étant une plateforme sur le web, nous invitons les gens à enrichir une base de données en expansion réunissant des livres d’auteur.e.s de la diaspora africaine. Dans cet espace, les gens sont invités à laisser leurs marques à l’intention des personnes qui visiteront cette archive réalisée par ses utilisateur.rice.s, et où l’on peut partager ses points de vue et en apprendre de ceux des autres. S’agissant d’une bibliothèque numérique, le partage y est mis en valeur et notre objectif est d’offrir des ressources permettant de mieux comprendre les œuvres présentées sur cette plateforme.</p>
+        
+            <p>La Bibliothèque des infinis se veut un portail où les liens reposent sur le respect mutuel et l’amour de la littérature issue de la diaspora africaine.</p>
+        
+            <h1 class="secondary">Vision</h1>
+            
+            <p>La Bibliothèque des infinis a d’abord pris la forme d’une exposition physique et, maintenant, elle est devenue une plateforme sur le web. Bien que celle-ci soit par nature modulaire, la base de données archivistiques du site sera enrichie de manière organique au fil du temps, ce qui sera possible grâce à l’engagement continu des communautés qu’elle dessert et célèbre. Au fur et à mesure de sa croissance, elle deviendra une ressource pour divers espaces</p>
+        
+            <h1 class="secondary">Valeurs</h1>
+            
+            <p>La Bibliothèque des infinis estime et priorise le travail littéraire des auteur.e.s noir.e.s et de la diaspora africaine.</p>
+        
+            <p>En tant que bibliothèque numérique, le partage est valorisé et l’objectif est d’offrir des ressources permettant d’approfondir la compréhension de l’expression créatrice des Noir.e.s et des personnes issues de la diaspora africaine</p>
+        
+            <p>Nous prônons la diversité pour aborder la réalité des Noir.e.s en créant un portail qui offre des points de vue nuancés dans lesquels il est possible de s’engager.</p>
+        
+            <h1 class="secondary">À qui s’adress-t-on</h1>
+            
+            <p>La Bibliothèque des infinis est une plateforme dirigée par des Noir.e.s, où quiconque aime et respecte la littérature noire est invité à offrir son témoignage sur des œuvres marquantes. Cet espace vise à réunir une communauté qui apprécie la littérature et les arts des Noir.e.s. La présente plateforme est développée pour les communautés noir.e.s et issues de la diaspora africaine, et pour les personnes qui apprécient notre mission. La section Soumettre sollicite la contribution de gens de diverses générations, et ce, à partir des élèves du secondaire. Cette plateforme est construite pour rayonner auprès des bibliomanes, des artistes, des éducateur.rice.s, des spécialistes et des technologues de la création. </p>
+        
+            <div class="spacer"></div>
+    
+        </div>
+    
+       
+      </div>
+    
+      <div class="col-md-6 no-gutters">
+    
+        <div id="rightside" class="about-rightSide">
+        <h1>Histoire</h1>
+        
+        <p>À l’automne 2017, l’artiste Shaya Ishak démarra un projet intitulé Black Libraries Matter au cours d’une résidence au Khyber Centre for the Arts à Halifax, en Nouvelle-Écosse. Produite par la communauté et créée en partenariat avec la North Branch Memorial Library, cette initiative célébrait la résistance par la littérature et prônait la capacité des idées de catalyser l’espoir et le changement autour d’enjeux d’injustice sociale en lien avec la diaspora noire. Composé de livres, de musique, de films et de vidéos créés par des artistes noir.e.s et issu.e.s de la diaspora africaine, établi.e.s au Canada et ailleurs, cet espace a été activé par un groupe de lecture, des projections de films et des ateliers de production artistique co-animés par des artistes africains et noir.e.s de la Nouvelle-Écosse.</p>
+    
+        <p>À l’été 2021, Shaya Ishaq revisitait ce projet pour en faire une exposition individuelle majeure, intitulée Bibliothèque des infinis à SAW à Ottawa, en Ontario. Pour cette itération, le lieu en entier a été transformé en une bibliothèque et un espace d’action communautaire. La Bibliothèque des infinis visait à élaborer une vision collective d’un imaginaire libéré par la littérature, la solidarité et les récits de résilience tissés dans les communautés de la diaspora noire sur toute l’Île-de-la-Tortue. Ce sont des leaders de la communauté, des artistes, auteur.e.s, activistes et professeur.e.s de Halifax, où le projet a démarré et a été présenté sous le titre de Black Libraries Matter, qui ont suggéré des titres de livres pour la bibliothèque. En activant un espace avec les multiples voix noires dans ce pays, l’artiste a créé un portail de ressources et de récits pouvant autonomiser et ouvrir les esprits.</p>
+    
+        <p>Pour accompagner l’espace d’exposition physique et les collaborations hors-site, une version bêta du site Bibliothèque des infinis a été lancée. L’intention, et l’espoir, derrière le développement de la Bibliothèque en domaine numérique est de permettre au public de contribuer à une base de données en pleine croissance en suggérant des titres. Ce projet a le potentiel de rejoindre des publics à travers le pays, le monde et ultimement des gens au-delà de l’exposition. Cet espace numérique est un portail, qui ne prétend pas détenir une compréhension monolithique de la population noire, mais qui fait plutôt place à une infinie constellation d’interrelations.</p>
+    
+        <p>Ce projet continue à progresser; voici quelques questions que s’est posées Shaya Ishaq :
+
+            Comment une plateforme sur le web peut-elle générer l’apprentissage et le partage? À quoi ressemble la collaboration dans le domaine numérique? Comment la Bibliothèque des infinis peut-elle rendre possibles des manières dynamiques de raconter?</p>
+        <p>La Bibliothèque des infinis est créée en partenariat avec SAW et avec l’appui généreux du Conseil des arts du Canada.</p>
+            <div class="spacer"></div>
+    
+    
+       </div>
+    
+    </div>
+    
+    
+    
+    </main>
+
+<div class="marquee">
+        <p class="english"> <a href="https://mailchi.mp/6b822e41a101/library-of-infinities-canada">JOIN THE MAILING LIST </a></p>
+        <p class="french hide"> <a href="https://mailchi.mp/6b822e41a101/library-of-infinities-canada">INSCRIVEZ-VOUS À LA LISTE D'ENVOI</a></p>
+</div>
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+<script>
+
+$(document).ready(function (){
+    $('.buttons button').click(function (){
+        $('#rightside').empty();
+        $('#rightside').html($("#" + $(this).data('link')).html());
+    });    
+ });
+ </script>
+
+ <script>
+ $(function(){
+var scroll_text;
+$('myUL').hover(
+    function () {
+        var $elmt = $(this);
+        scroll_text = setInterval(function(){scrollText($elmt);}, 5);
+    },
+    function () {
+        clearInterval(scroll_text);
+        $(this).find('myUL li a').css({
+            left: 0
+        });
+    }
+);
+    
+    var scrollText = function($elmt){
+        var left = $elmt.find('myUL li a').position().left - 1;
+        left = -left > $elmt.find('myUL li a').width() ? $elmt.find('myUL').width() : left;
+        $elmt.find('myUL li a').css({
+            left: left
+        });
+    };
+    
+});
+ </script>
+
+</body>
+</html>
