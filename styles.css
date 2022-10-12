@@ -260,7 +260,7 @@ padding: 8px 15px 8px 15px;
   /* ===== MENU PANEL ===== */
 
 #trigger2 {
-  font-size:20px;
+  font-size:4.5vw;
 	font-family:Phase;
 	position: fixed;
 	color:black;
@@ -720,6 +720,14 @@ h1.secondary{
   display: inline-block !important;
 }
 
+.english.hide{
+  display: none;
+}
+
+/* #english-header.hide{
+  display: none;
+} */
+
 @media(max-width:574px) {
 
 
@@ -984,7 +992,13 @@ h1.secondary{
     
   }
   
+  .english.hide{
+    display: none;
+  }
 
+  #english-header.hide{
+    display: none;
+  }
 
   #myUL li a {
     font-size: 20px !important;

@@ -15,7 +15,7 @@
 
 </head>
 <header>
-    <h1><a href="index.html" class="english" id="main-header"> LIBRARY OF INFINITIES</a></h1>
+    <h1 id="english-header"><a href="index.html" class="english" id="main-header"> LIBRARY OF INFINITIES</a></h1>
     <h1><a href="index.html?lang=french" class="french hide"> BIBLIOTHÈQUE DES INFINIS</a></h1>
     <span id="trigger" class="desktop-menu" onclick="openNavright()">MENU</span>
     <span id="trigger" class="mobile-menu" onclick="openNavright()"><i class="fa-solid fa-bars"></i></span>
@@ -77,7 +77,8 @@
 
         function setFrenchAsLanguage() { 
 
-          
+            document.getElementById("english-header").classList.add("hide")
+
             document.getElementsByTagName("title")[0].text = "Bibliothèque des Infinis"
 
             document.getElementById("englishSelected").classList.remove("active")
@@ -104,8 +105,10 @@
         }
         function setEnglishAsLanguage() {
 
+            document.getElementById("english-header").classList.remove("hide")
+
             document.getElementsByTagName("title")[0].text = "Library of Infinities"
-            
+
             document.getElementById("frenchSelected").classList.remove("active")
             document.getElementById("englishSelected").classList.add("active")
 
