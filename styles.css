@@ -724,9 +724,9 @@ h1.secondary{
   display: none;
 }
 
-/* #english-header.hide{
-  display: none;
-} */
+header h1{
+  padding-left: 10px;
+}
 
 @media(max-width:574px) {
 
