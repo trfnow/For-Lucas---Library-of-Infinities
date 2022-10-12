@@ -96,10 +96,11 @@ h3 {
 	z-index:102;
 	bottom: 0;
 	margin:0;
-	 display: inline-block;
-	 border-top:3px black solid;
+  display: inline-block;
+  border-top:3px black solid;
 	flex: 0 0 5.5vh;
-  min-height: 35px;
+  height: 5.5vw;
+  min-height: 50px;
 }
 
 .spacer {
@@ -360,6 +361,7 @@ textarea {
 
 
 #myInput {
+  position: absolute;
 	border: none;
   width: 50%;
   left: 0;
@@ -375,6 +377,7 @@ textarea {
 }
 
 #myFrenchInput {
+  position: absolute;
 	border: none;
   width: 50%;
   left: 0;
@@ -740,6 +743,13 @@ h1.secondary{
     margin-top: 1px !important;
   }
 
+
+
+  body > div > p.english{
+    bottom: 8%;
+    font-size: 20px;
+  }
+
   .french{
     margin-top: 1px !important;
   }
@@ -816,7 +826,7 @@ h1.secondary{
   }
 
   .marquee{
-    min-height: 35px;
+    min-height: 50px;
   }
 
 
@@ -938,18 +948,40 @@ h1.secondary{
   }
 
   
+  /* #myInput {
+    border: none;
+    width: 50%;
+    left: 0;
+    bottom:0;
+    font-size:4.5vw;
+    font-family:Phase;
+    color:black !important;
+    margin:0;
+    padding:0 0 0 15px;
+    float:left;
+    line-height:1;
+    background-color: #2ece8d;
+  } */
+  
 
 
   #myInput{
-    padding-bottom: 8px;
+    /* padding-bottom: 8px; */
     font-size: 20px;
+    bottom: 50%;
+    transform: translateY(50%);
   }
+  
   #myFrenchInput{
-    padding: 8px;
+    font-size: 20px;
+    bottom: 50%;
+    transform: translateY(50%);
   }
 
   #trigger2{
-    padding-bottom: 8px;
+    bottom: 25%;
+    position: absolute;
+    
   }
   
 

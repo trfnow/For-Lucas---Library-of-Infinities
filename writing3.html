@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title> Library of Infinities</title>
+    <title>Library of Infinities</title>
 
 
 
@@ -79,6 +79,10 @@
         }
         function setFrenchAsLanguage() { 
 
+        
+        document.getElementsByTagName("title")[0].text = "Bibliothèque des Infinis"
+        
+
         document.getElementById("englishSelected").classList.remove("active")
         document.getElementById("frenchSelected").classList.add("active")
 
@@ -112,6 +116,8 @@
 
         }
         function setEnglishAsLanguage() {
+
+        document.getElementsByTagName("title")[0].text = "Library of Infinities"
 
         document.getElementById("frenchSelected").classList.remove("active")
         document.getElementById("englishSelected").classList.add("active")

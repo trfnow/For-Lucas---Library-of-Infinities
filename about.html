@@ -76,6 +76,10 @@
         }
 
         function setFrenchAsLanguage() { 
+
+          
+            document.getElementsByTagName("title")[0].text = "Bibliothèque des Infinis"
+
             document.getElementById("englishSelected").classList.remove("active")
             document.getElementById("frenchSelected").classList.add("active")
 
@@ -99,6 +103,9 @@
 
         }
         function setEnglishAsLanguage() {
+
+            document.getElementsByTagName("title")[0].text = "Library of Infinities"
+            
             document.getElementById("frenchSelected").classList.remove("active")
             document.getElementById("englishSelected").classList.add("active")
 

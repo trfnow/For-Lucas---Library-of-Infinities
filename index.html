@@ -76,6 +76,8 @@
 
         function setFrenchAsLanguage() { 
 
+          document.getElementsByTagName("title")[0].text = "Bibliothèque des Infinis"
+
           document.getElementById("englishSelected").classList.remove("active")
           document.getElementById("frenchSelected").classList.add("active")
 
@@ -109,6 +111,8 @@
           
         }
         function setEnglishAsLanguage() {
+
+          document.getElementsByTagName("title")[0].text = "Library of Infinities"
 
           document.getElementById("frenchSelected").classList.remove("active")
           document.getElementById("englishSelected").classList.add("active")
@@ -155,6 +159,11 @@
 
 $(document).ready(function() {
       footerOffset();
+
+    const languageSelected = getParameterByName("lang")
+    if (languageSelected==="french") {
+      document.getElementsByTagName("title")[0].text = "Bibliothèque des Infinis";
+    }
   });
 
   function getParameterByName(name, url) {
